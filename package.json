@@ -1,0 +1,21 @@
+{
+  "name": "kamadatepicker",
+  "version": "1.4.3",
+  "description": "a jQuery based datepicker for jalali (shamsi) calendar.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hadi290/kamaDatepicker.git"
+  },
+  "keywords": [
+    "kama",
+    "datepicker",
+    "jalali",
+    "shamsi"
+  ],
+  "author": "Hadi Kefayati",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hadi290/kamaDatepicker/issues"
+  },
+  "homepage": "https://github.com/Hadi290/kamaDatepicker#readme"
+}
