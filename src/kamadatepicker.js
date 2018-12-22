@@ -1,7 +1,7 @@
 /*
  * KamaDatepicker
- * Version: 1.4.3
- * Copyright © 2016 Hadi Kefayati | MIT license
+ * Version: 1.4.4
+ * Copyright © 2018 Hadi Kefayati | MIT license
  * Contact: h.kefaiati2010@gmail.com
  */
 var kamaDatepicker = function (elementID, opt) {
@@ -419,10 +419,11 @@ var kamaDatepicker = function (elementID, opt) {
 
     nextMonth.on("click", function () {
         //console.log("month: " + selectedMonth + ", year: " + selectedYear);
+        debugger
         if (monthDropdown.val() < 12) {
             monthDropdown.val(parseInt(monthDropdown.val()) + 1);
             monthDropdown.trigger("change");
-        } else {
+        } else if (yearDropdown.val() != yearDropdown[0].options[yearDropdown[0].options.length - 1].value) {
             monthDropdown.val(1);
             monthDropdown.trigger("change");
             yearDropdown.val(parseInt(yearDropdown.val()) + 1);
@@ -434,7 +435,7 @@ var kamaDatepicker = function (elementID, opt) {
         if (monthDropdown.val() > 1) {
             monthDropdown.val(parseInt(monthDropdown.val()) - 1);
             monthDropdown.trigger("change");
-        } else {
+        } else if (yearDropdown.val() != yearDropdown[0].options[0].value) {
             monthDropdown.val(12);
             monthDropdown.trigger("change");
             yearDropdown.val(parseInt(yearDropdown.val()) - 1);
