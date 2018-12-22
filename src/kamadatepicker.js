@@ -1,6 +1,6 @@
 /*
  * KamaDatepicker
- * Version: 1.4.4
+ * Version: 1.4.5
  * Copyright © 2018 Hadi Kefayati | MIT license
  * Contact: h.kefaiati2010@gmail.com
  */
@@ -77,6 +77,8 @@ var kamaDatepicker = function (elementID, opt) {
     options.highlightSelectedDay = options.highlightSelectedDay !== undefined ? options.highlightSelectedDay : false;
     options.sync = options.sync !== undefined ? options.sync : false;
     options.gotoToday = options.gotoToday !== undefined ? options.gotoToday : false;
+    options.pastYearsCount = !isNaN(options.pastYearsCount) ? options.pastYearsCount : 95;
+    options.futureYearsCount = !isNaN(options.futureYearsCount) ? options.futureYearsCount : 6;
 
     // create DOM
     var inputElement = $("#" + elementID);
@@ -256,8 +258,8 @@ var kamaDatepicker = function (elementID, opt) {
 
     var makeYearList = function (thisYear) {
         yearDropdown.find('option').remove();
-        for (i = 0; i < 101; i++) {
-            var tempYear = ((thisYear - 95) + i) + '';
+        for (i = 0; i < options.pastYearsCount + options.futureYearsCount; i++) {
+            var tempYear = ((thisYear - options.pastYearsCount) + i) + '';
             if (options.forceFarsiDigits) {
                 for (var j = 0; j < 10; j++) {
                     var rgx = new RegExp(j, 'g');
@@ -265,7 +267,7 @@ var kamaDatepicker = function (elementID, opt) {
                 }
             }
             yearDropdown.append($('<option>', {
-                value: (thisYear - 95) + i,
+                value: (thisYear - options.pastYearsCount) + i,
                 text: tempYear
             }));
         }

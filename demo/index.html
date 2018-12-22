@@ -46,7 +46,7 @@
 	</style>
 </head>
 <body class="container">
-	<h1>تقویم شمسی کاما - نسخه 1.4.3</h1>
+	<h1>تقویم شمسی کاما - نسخه 1.4.5</h1>
 	<br>
 	<p>تقویم شمسی جاوااسکریپت (مبتنی بر jquery). در این صفحه (دمو) از bootstrap و font awesome هم استفاده شده است (فقط برای نشان دادن سازگاری تقویم)</p>
 	<br>
@@ -89,6 +89,8 @@
 				<li>متمایز کردن روزهای تعطیل</li>
 				<li>متمایز نشان دادن روز انتخاب شده</li>
 				<li>سینک شدن تقویم به ورودی</li>
+				<li>محدود کردن سال‌های قابل انتخاب قبل از سال جاری به 0 سال</li>
+				<li>محدود کردن سال‌های قابل انتخاب بعد از سال جاری به 3 سال</li>
 			</ul>
 		</div>
 	</div>
@@ -202,6 +204,18 @@
 						<td>true, false</td>	
 						<td>gotoToday</td>
 					</tr>
+					<tr>
+						<td>تعداد سال‌های قابل انتخاب، قبل از سال جاری</td>
+						<td>95</td>
+						<td>number</td>	
+						<td>pastYearsCount</td>
+					</tr>
+					<tr>
+						<td>تعداد سال‌های قابل انتخاب، بعد از سال جاری</td>
+						<td>6</td>
+						<td>number</td>	
+						<td>futureYearsCount</td>
+					</tr>
 				</tbody>
 			</table>
 			
@@ -235,6 +249,8 @@
 			, markHolidays: true
 			, highlightSelectedDay: true
 			, sync: true
+			, pastYearsCount: 0
+			, futureYearsCount: 3
 		});
 
 		// for testing sync functionallity
