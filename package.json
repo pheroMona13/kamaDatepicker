@@ -1,6 +1,6 @@
 {
   "name": "kamadatepicker",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "a jQuery based datepicker for jalali (shamsi) calendar.",
   "repository": {
     "type": "git",

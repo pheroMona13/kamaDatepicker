@@ -276,19 +276,12 @@ var kamaDatepicker = function (elementID, opt) {
     // isleap calculator, supported year: 1243 - 1473
     var isLeapYear = function (year) {
         var mod;
-        if (year < 1343 && year > 1243) {
+        if (year > 1243 && year < 1473) {
             mod = year % 33;
             if (mod == 1 || mod == 5 || mod == 9 || mod == 13 || mod == 17 || mod == 22 || mod == 26 || mod == 30) {
                 return true;
             } else {
                 return false;
-            }
-        } else if (year < 1473 && year > 1342) {
-            mod = year % 17;
-            if (mod == 1 || mod == 5 || mod == 9 || mod == 13 || mod == 18 || mod == 22 || mod == 26 || mod == 30) {
-                return true;
-            } else {
-                return false
             }
         } else {
             return "unknown";
