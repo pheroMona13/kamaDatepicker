@@ -1,7 +1,7 @@
 /*
  * KamaDatepicker
- * Version: 1.4.5
- * Copyright © 2018 Hadi Kefayati | MIT license
+ * Version: 1.4.7
+ * Copyright © 2019 Hadi Kefayati | MIT license
  * Contact: h.kefaiati2010@gmail.com
  */
 var kamaDatepicker = function (elementID, opt) {
@@ -104,7 +104,21 @@ var kamaDatepicker = function (elementID, opt) {
     calendarDiv.append("<table class='bd-table' dir='rtl' cellspacing='0' cellpadding='0'></table>");
 
     // create month and year drop downs and next/prev month buttons inside title div
-    titleDiv.append("<button id='bd-next-" + elementID + "' class='bd-next' type='button' title='ماه بعدی' data-toggle='tooltip'><span>بعدی</span></button>");
+    if (options.swapNextPrev)
+        titleDiv.append("<button id='bd-prev-" + elementID + "' class='bd-prev' type='button' title='ماه قبلی' data-toggle='tooltip'><span>قبلی</span></button>");
+    else
+        titleDiv.append("<button id='bd-next-" + elementID + "' class='bd-next' type='button' title='ماه بعدی' data-toggle='tooltip'><span>بعدی</span></button>");
+
+    titleDiv.append("<div class='bd-dropdown'></div><div class='bd-dropdown'></div>");
+    titleDiv.find('.bd-dropdown:nth-child(2)').append("<select id='bd-month-" + elementID + "' class='bd-month'></select>");
+    titleDiv.find('.bd-dropdown:nth-child(3)').append("<select id='bd-year-" + elementID + "' class='bd-year'></select>");
+
+    if (options.swapNextPrev)
+        titleDiv.append("<button id='bd-next-" + elementID + "' class='bd-next' type='button' title='ماه بعدی' data-toggle='tooltip'><span>بعدی</span></button>");
+    else
+        titleDiv.append("<button id='bd-prev-" + elementID + "' class='bd-prev' type='button' title='ماه قبلی' data-toggle='tooltip'><span>قبلی</span></button>");
+
+
     var nextMonth = $("#bd-next-" + elementID);
     if (options.nextButtonIcon) {
         nextMonth.find("span").css("display", "none");
@@ -117,18 +131,14 @@ var kamaDatepicker = function (elementID, opt) {
         }
     }
 
-    titleDiv.append("<div class='bd-dropdown'></div><div class='bd-dropdown'></div>");
 
-    titleDiv.find('.bd-dropdown:nth-child(2)').append("<select id='bd-month-" + elementID + "' class='bd-month'></select>");
     var monthDropdown = $("#bd-month-" + elementID);
     $.each(MONTH_NAMES, function (key, value) {
         monthDropdown.append($("<option></option>").attr("value", key).text(value));
     });
     
-    titleDiv.find('.bd-dropdown:nth-child(3)').append("<select id='bd-year-" + elementID + "' class='bd-year'></select>");
     var yearDropdown = $("#bd-year-" + elementID);
 
-    titleDiv.append("<button id='bd-prev-" + elementID + "' class='bd-prev' type='button' title='ماه قبلی' data-toggle='tooltip'><span>قبلی</span></button>");
     var prevMonth = $("#bd-prev-" + elementID);
     if (options.nextButtonIcon) {
         prevMonth.find("span").css("display", "none");

@@ -91,6 +91,7 @@
 				<li>سینک شدن تقویم به ورودی</li>
 				<li>محدود کردن سال‌های قابل انتخاب قبل از سال جاری به 0 سال</li>
 				<li>محدود کردن سال‌های قابل انتخاب بعد از سال جاری به 3 سال</li>
+				<li>جابجا کردن دکمه‌های قبلی و بعدی</li>
 			</ul>
 		</div>
 	</div>
@@ -242,8 +243,8 @@
 		kamaDatepicker('date2', customOptions);
 
 		kamaDatepicker('date3', { 
-			nextButtonIcon: "timeir_next.png"
-			, previousButtonIcon: "timeir_prev.png"
+			nextButtonIcon: "timeir_prev.png"
+			, previousButtonIcon: "timeir_next.png"
 			, forceFarsiDigits: true
 			, markToday: true
 			, markHolidays: true
@@ -251,6 +252,7 @@
 			, sync: true
 			, pastYearsCount: 0
 			, futureYearsCount: 3
+			, swapNextPrev: true
 		});
 
 		// for testing sync functionallity
