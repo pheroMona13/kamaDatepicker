@@ -43,10 +43,13 @@
 		#options-table tr:nth-child(even) {
 			background-color: #dddddd;
 		}
+		#options-table td:nth-child(1) {
+			text-align: right;
+		}
 	</style>
 </head>
 <body class="container">
-	<h1>تقویم شمسی کاما - نسخه 1.4.6</h1>
+	<h1>تقویم شمسی کاما - نسخه 1.4.7</h1>
 	<br>
 	<p>تقویم شمسی جاوااسکریپت (مبتنی بر jquery). در این صفحه (دمو) از bootstrap و font awesome هم استفاده شده است (فقط برای نشان دادن سازگاری تقویم)</p>
 	<br>
@@ -96,6 +99,36 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 rtl-col">
+			<span class="label label-default">حالت سفارشی 4#</span>
+			<input type="text" id="date4">
+			<br>
+			<ul>
+				<li>نمایش تقویم همیشه در بالای فیلد</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row" id="date5-parent" style="background-color: linen">
+		<div class="form-group col-xs-12 col-sm-6 rtl-col" style="padding-top: 260px">
+			<span class="label label-default">حالت سفارشی 5-1#</span>
+			<input type="text" id="date5-1">
+			<br>
+			<ul>
+				<li>محاسبه اتوماتیک موقعیت مناسب برای نمایش تقویم نسبت به parent element مشخص شده	</li>
+			</ul>
+		</div>
+
+		<div class="form-group col-xs-12 col-sm-6 rtl-col" style="padding-top: 40px;">
+			<span class="label label-default">حالت سفارشی 5-2#</span>
+			<input type="text" id="date5-2">
+			<br>
+			<ul>
+				<li>محاسبه اتوماتیک موقعیت مناسب برای نمایش تقویم نسبت به parent element مشخص شده	</li>
+			</ul>
+		</div>
+	</div>
 	
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -223,12 +256,31 @@
 						<td>true, false</td>	
 						<td>swapNextPrev</td>
 					</tr>
+					<tr>
+						<td>
+							موقعیت نمایش تقویم
+							<ul>
+								<li><b>top:</b> تقویم همیشه در بالای input مربوطه نمایش داده خواهد شد.</li>
+								<li><b>bottom:</b> تقویم همیشه در پایین input مربوطه نمایش داده خواهد شد.</li>
+								<li><b>auto:</b> در صورتی که پایین input فضای کافی برای نمایش تقویم وجود داشته باشد، تقویم در پایین input نمایش داده خواهد شد. در غیر اینصورت اگر در بالای input فضای کافی برای نمایش تقویم وجود داشته باشد، تقویم در بالای input نمایش داده خواهد شد. و در صورتی که نه پایین و نه بالای input فضای کافی برای نمایش تقویم وجود نداشته باشد، تقویم در پایین input نمایش داده خواهد شد.</li>
+							</ul>
+						</td>
+						<td>bottom</td>
+						<td>top, bottom, auto</td>
+						<td>position</td>
+					</tr>
+					<tr>
+						<td>id مربوط به parent element که موقعیت نمایش تقویم باید نسبت به آن محاسبه شود.</td>
+						<td></td>
+						<td>string</td>
+						<td>parentId</td>
+					</tr>
 				</tbody>
 			</table>
 			
 		</div>
 	</div>
-	
+
 	<script>
 		kamaDatepicker('date1', { buttonsColor: "red" });
 		
@@ -259,6 +311,19 @@
 			, pastYearsCount: 0
 			, futureYearsCount: 3
 			, swapNextPrev: true
+		});
+
+		kamaDatepicker('date4', {
+			position: 'top' // top, bottom or auto
+		});
+
+		kamaDatepicker('date5-1', {
+			position: 'auto' // top, bottom or auto
+			, parentId: 'date5-parent'
+		});
+		kamaDatepicker('date5-2', {
+			position: 'auto' // top, bottom or auto
+			, parentId: 'date5-parent'
 		});
 
 		// for testing sync functionallity

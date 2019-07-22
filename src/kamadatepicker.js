@@ -180,7 +180,7 @@ var kamaDatepicker = function (elementID, opt) {
             syncCalendar();
             isSynced = true;
         }
-        mainDiv;
+        setCalendarPosition();
     }).on('blur', function () {
         if (isCalClicked == false) {
             mainDiv.addClass("bd-hide");
@@ -202,13 +202,67 @@ var kamaDatepicker = function (elementID, opt) {
         numberOfDays = monthDays(selectedYear, selectedMonth);
         dayOfWeekJ = findFirstDayOfMonth(selectedYear, selectedMonth);
         drawDays(numberOfDays, dayOfWeekJ);
+        setCalendarPosition();
     });
     yearDropdown.on('change', function () {
         selectedYear = parseInt(this.value);
         numberOfDays = monthDays(selectedYear, selectedMonth);
         dayOfWeekJ = findFirstDayOfMonth(selectedYear, selectedMonth);
         drawDays(numberOfDays, dayOfWeekJ);
+        setCalendarPosition();
     });
+
+    function setCalendarPosition() {
+        let calendarContainer = document.querySelector(`#bd-main-${elementID}`);
+        let input = document.querySelector(`#${elementID}`);
+
+        input.offsetHeight; // input height
+        calendarContainer.offsetHeight; // calendar height;
+
+        if (options.position === 'top') {
+            calendarContainer.style.top = `${-1 * calendarContainer.offsetHeight}px`; // top
+        }
+        else if (options.position === 'auto') {
+            // find parent element
+            let parentElement;
+            if (options.parentId)
+                parentElement = document.querySelector(`#${options.parentId}`);
+            
+            if (!options.parentId || !parentElement)
+                parentElement = document.querySelector(`#bd-root-${elementID}`);
+
+            let elementsDistance = getDistanceBetweenElements(
+                parentElement
+                , input
+            );
+
+            if ((parentElement.offsetHeight - elementsDistance) - (input.offsetHeight + calendarContainer.offsetHeight) > 0)
+                calendarContainer.style.top = `${input.offsetHeight}px`; // bottom
+            else if (elementsDistance - (input.offsetHeight + calendarContainer.offsetHeight) > 0)
+                calendarContainer.style.top = `${-1 * calendarContainer.offsetHeight}px`; // top
+            else
+                calendarContainer.style.top = `${input.offsetHeight}px`; // bottom
+        }
+        else {
+            // bottom or any other values
+            calendarContainer.style.top = `${input.offsetHeight}px`; // bottom
+        }
+
+        function getPositionAtCenter(element) {
+            const {top, left} = element.getBoundingClientRect();
+            return {
+              x: left,
+              y: top
+            };
+          }
+         
+         function getDistanceBetweenElements(a, b) {
+           const aPosition = getPositionAtCenter(a);
+           const bPosition = getPositionAtCenter(b);
+         
+           return Math.abs(aPosition.y - bPosition.y);
+         }
+    }
 
     // Georgian to Jalali converter (minified)
     // source is unknown. contact if you know the code owner.
