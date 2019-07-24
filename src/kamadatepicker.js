@@ -1,11 +1,8 @@
-/*
- * KamaDatepicker
- * Version: 1.4.7
- * Copyright © 2019 Hadi Kefayati | MIT license
- * Contact: h.kefaiati2010@gmail.com
- */
-var kamaDatepicker = function (elementID, opt) {
+require("./kamadatepicker.scss");
 
+window.kamaDatepicker = kamaDatepicker;
+
+function kamaDatepicker(elementID, opt) {
     // check arguments
     if (typeof elementID !== "string" || elementID.length === 0) {
         console.error("kamadatepicker error: input ID is not string or is empty");
@@ -322,7 +319,7 @@ var kamaDatepicker = function (elementID, opt) {
 
     var makeYearList = function (thisYear) {
         yearDropdown.find('option').remove();
-        for (i = 0; i < options.pastYearsCount + options.futureYearsCount; i++) {
+        for (let i = 0; i < options.pastYearsCount + options.futureYearsCount; i++) {
             var tempYear = ((thisYear - options.pastYearsCount) + i) + '';
             if (options.forceFarsiDigits) {
                 for (var j = 0; j < 10; j++) {
@@ -371,7 +368,7 @@ var kamaDatepicker = function (elementID, opt) {
 
     todaysJ = gregorianToJalali(todayG.getFullYear(), todayG.getMonth() + 1, todayG.getDate());
     var selectedDateJ = [];
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         selectedDateJ[i] = todaysJ[i];
     }
 
@@ -406,7 +403,7 @@ var kamaDatepicker = function (elementID, opt) {
             daysTable.append($('<tr>', {
                 class: "tr-" + rowIndex
             }));
-            for (i = 0; i < 7; i++) {
+            for (let i = 0; i < 7; i++) {
                 if (dayIndex == 1) {
                     var j = 0;
                     while (j < dayOfWeekJ) {

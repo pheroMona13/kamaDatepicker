@@ -3,16 +3,16 @@
 <head>
 	<title>kamaDatepicker - demo</title>
 
-	<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/rastikerdar/vazir-font/v4.4.1/dist/font-face.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="../dependencies/optional/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="../node_modules/vazir-font/dist/font-face.css" />
+	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 	
-	<link type="text/css" rel="stylesheet" href="../style/kamadatepicker.css"/>
+	<link type="text/css" rel="stylesheet" href="../dist/kamadatepicker.min.css"/>
 
-	<script src="../dependencies/jquery-3.1.1.min.js"></script>
-	<script src="../dependencies/optional/bootstrap.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<script src="../src/kamadatepicker.js"></script>
+	<script src="../dist/kamadatepicker.min.js"></script>
 
 	<style>
 		body {
@@ -301,8 +301,8 @@
 		kamaDatepicker('date2', customOptions);
 
 		kamaDatepicker('date3', { 
-			nextButtonIcon: "timeir_prev.png"
-			, previousButtonIcon: "timeir_next.png"
+			nextButtonIcon: "assets/timeir_prev.png"
+			, previousButtonIcon: "assets/timeir_next.png"
 			, forceFarsiDigits: true
 			, markToday: true
 			, markHolidays: true

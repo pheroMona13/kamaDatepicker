@@ -1,7 +1,11 @@
 {
   "name": "kamadatepicker",
-  "version": "1.4.7",
+  "version": "1.5.0",
   "description": "a jQuery based datepicker for jalali (shamsi) calendar.",
+  "scripts": {
+    "build": "node_modules\\.bin\\webpack --config webpack.config.js",
+    "start": "node_modules\\.bin\\webpack --config webpack.config.js --watch"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hadi290/kamaDatepicker.git"
@@ -17,5 +21,27 @@
   "bugs": {
     "url": "https://github.com/Hadi290/kamaDatepicker/issues"
   },
-  "homepage": "https://github.com/Hadi290/kamaDatepicker#readme"
+  "homepage": "https://github.com/Hadi290/kamaDatepicker#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-core": "6.26.3",
+    "babel-loader": "8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "6.24.1",
+    "bootstrap": "^3.4.1",
+    "css-loader": "0.28.7",
+    "extract-text-webpack-plugin": "3.0.2",
+    "font-awesome": "4.7.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "2.1.5",
+    "sass-loader": "6.0.6",
+    "style-loader": "0.19.0",
+    "uglifyjs-webpack-plugin": "1.1.1",
+    "vazir-font": "^20.1.0",
+    "webpack": "3.8.1"
+  }
 }
