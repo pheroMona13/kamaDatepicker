@@ -59,7 +59,7 @@ function getPlugins() {
     );
   } else if (buildMode === "development") {
     plugins.push(
-      new webpack.BannerPlugin({ banner: "//@ sourceURL=[name].js", raw: true })
+      new webpack.BannerPlugin({ banner: "/* @ sourceURL=[name].js */", raw: true })
     );
   }
 
