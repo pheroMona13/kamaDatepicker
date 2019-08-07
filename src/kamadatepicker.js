@@ -245,20 +245,38 @@ function kamaDatepicker(elementID, opt) {
             calendarContainer.style.top = `${input.offsetHeight}px`; // bottom
         }
 
+        let isOut = isOutOfViewport(calendarContainer);
+        if (isOut.left)
+            calendarContainer.style.left = 0;
+
         function getPositionAtCenter(element) {
             const {top, left} = element.getBoundingClientRect();
             return {
-              x: left,
-              y: top
+                x: left,
+                y: top
             };
-          }
-         
-         function getDistanceBetweenElements(a, b) {
-           const aPosition = getPositionAtCenter(a);
-           const bPosition = getPositionAtCenter(b);
-         
-           return Math.abs(aPosition.y - bPosition.y);
-         }
+        }
+        function getDistanceBetweenElements(a, b) {
+            const aPosition = getPositionAtCenter(a);
+            const bPosition = getPositionAtCenter(b);
+            
+            return Math.abs(aPosition.y - bPosition.y);
+        }
+        function isOutOfViewport(elem) {
+            // Get element's bounding
+            var bounding = elem.getBoundingClientRect();
+        
+            // Check if it's out of the viewport on each side
+            var out = {};
+            out.top = bounding.top < 0;
+            out.left = bounding.left < 0;
+            out.bottom = bounding.bottom > (window.innerHeight || document.documentElement.clientHeight);
+            out.right = bounding.right > (window.innerWidth || document.documentElement.clientWidth);
+            out.any = out.top || out.left || out.bottom || out.right;
+            out.all = out.top && out.left && out.bottom && out.right;
+        
+            return out;
+        };
     }
 
     // Georgian to Jalali converter (minified)
