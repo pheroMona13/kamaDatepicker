@@ -74,8 +74,9 @@ function kamaDatepicker(elementID, opt) {
     options.highlightSelectedDay = options.highlightSelectedDay !== undefined ? options.highlightSelectedDay : false;
     options.sync = options.sync !== undefined ? options.sync : false;
     options.gotoToday = options.gotoToday !== undefined ? options.gotoToday : false;
-    options.pastYearsCount = !isNaN(options.pastYearsCount) ? options.pastYearsCount : 95;
-    options.futureYearsCount = !isNaN(options.futureYearsCount) ? options.futureYearsCount : 6;
+    options.pastYearsCount = !isNaN(options.pastYearsCount) ? options.pastYearsCount : 1;
+    options.futureYearsCount = !isNaN(options.futureYearsCount) ? options.futureYearsCount : 1;
+    options.pastYearsNumber = !isNaN(options.pastYearsNumber) ? options.pastYearsNumber : "";
 
     // create DOM
     var inputElement = $("#" + elementID);
@@ -335,22 +336,42 @@ function kamaDatepicker(elementID, opt) {
         return dayOfWeekJ;
     }
 
-    var makeYearList = function (thisYear) {
-        yearDropdown.find('option').remove();
-        for (let i = 0; i < options.pastYearsCount + options.futureYearsCount; i++) {
-            var tempYear = ((thisYear - options.pastYearsCount) + i) + '';
-            if (options.forceFarsiDigits) {
-                for (var j = 0; j < 10; j++) {
-                    var rgx = new RegExp(j, 'g');
-                    tempYear = tempYear.replace(rgx, FA_NUMS[j]);
-                }
-            }
-            yearDropdown.append($('<option>', {
-                value: (thisYear - options.pastYearsCount) + i,
-                text: tempYear
-            }));
+  var makeYearList = function (thisYear) {
+    yearDropdown.find("option").remove();
+    if (options.pastYearsNumber == "") {
+      for (i = 0; i < options.pastYearsCount + options.futureYearsCount + 1; i++) {
+        tempYear = thisYear - options.pastYearsCount + i + "";
+        if (options.forceFarsiDigits) {
+          for (j = 0; j < 10; j++) {
+            rgx = new RegExp(j, "g");
+            tempYear = tempYear.replace(rgx, FA_NUMS[j]);
+          }
         }
+        yearDropdown.append(
+          $("<option>", {
+            value: thisYear - options.pastYearsCount + i,
+            text: tempYear
+          })
+        );
+      }
+    } else {
+      for (i = 0; i < thisYear - options.pastYearsNumber + options.futureYearsCount + 1; i++) {
+        tempYear = options.pastYearsNumber + i + "";
+        if (options.forceFarsiDigits) {
+          for (j = 0; j < 10; j++) {
+            rgx = new RegExp(j, "g");
+            tempYear = tempYear.replace(rgx, FA_NUMS[j]);
+          }
+        }
+        yearDropdown.append(
+          $("<option>", {
+            value: options.pastYearsNumber + i,
+            text: tempYear
+          })
+        );
+      }
     }
+  };
 
     // isleap calculator, supported year: 1243 - 1473
     var isLeapYear = function (year) {
