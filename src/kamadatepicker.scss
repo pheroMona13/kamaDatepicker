@@ -89,14 +89,18 @@
 	button {
 		width: 30px;
 		height: 30px;
-		cursor: pointer;
 		background-color: #F8F8F8;
 		border: 0;
 
-		&:hover {
+		&:hover:enabled {
 			color: red;
 			font-weight: bold;
 			background-color: #E7E7E7;
+			cursor: pointer;
+		}
+
+		&:disabled {
+			background-color: #eee;
 		}
 	}
 }
