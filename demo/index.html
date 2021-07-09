@@ -61,7 +61,7 @@
 </head>
 
 <body class="container">
-	<h1>تقویم شمسی کاما - نسخه 1.5.2</h1>
+	<h1>تقویم شمسی کاما - نسخه 1.5.3</h1>
 	<br>
 	<p>تقویم شمسی جاوااسکریپت (مبتنی بر jquery). در این صفحه (دمو) از bootstrap و font awesome هم استفاده شده است (فقط
 		برای نشان دادن سازگاری تقویم)</p>
@@ -145,6 +145,21 @@
 		</div>
 	</div>
 
+	<div class="row" id="without-ids" style="margin-top: 40px;">
+		<div class="form-group col-xs-12 col-sm-6 col-md-4 rtl-col">
+			<span class="label label-default">بدون آی‌دی 1</span>
+			<input type="text">
+		</div>
+		<div class="form-group col-xs-12 col-sm-6 col-md-4 rtl-col">
+			<span class="label label-default">بدون آی‌دی 2</span>
+			<input type="text">
+		</div>
+		<div class="form-group col-xs-12 col-sm-6 col-md-4 rtl-col">
+			<span class="label label-default">بدون آی‌دی 3</span>
+			<input type="text">
+		</div>
+	</div>
+
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h2>روش استفاده</h2>
@@ -155,7 +170,17 @@
 			<p>HTML:</p>
 			<p style="background-color: #EEE; padding: 10px 20px;">&lt;input type="text" id="test-date-id"&gt;</p>
 			<p>JavaScript:</p>
-			<p style="background-color: #EEE; padding: 10px 20px;">kamaDatepicker('test-date-id');</p>
+			<p style="background-color: #EEE; padding: 10px 20px;">
+				kamaDatepicker('test-date-id');
+				<br>
+				<br>
+				یا
+				<br>
+				<br>
+				let myElement = document.querySelector('#test-date-id');
+				<br>
+				kamaDatepicker(myElement);
+			</p>
 		</div>
 
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -334,7 +359,6 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 	</div>
 
@@ -387,6 +411,9 @@
 
 		// for testing sync functionallity
 		$("#date2").val("1311/10/01");
+
+		// init without ids inputs
+		document.querySelectorAll('#without-ids input').forEach(input => { kamaDatepicker(input); });
 	</script>
 </body>
 
