@@ -1,6 +1,6 @@
 {
 	"name": "kamadatepicker",
-	"version": "1.5.2",
+	"version": "1.5.3",
 	"description": "a jQuery based datepicker for jalali (shamsi) calendar.",
 	"scripts": {
 		"build": "node_modules\\.bin\\webpack --config webpack.config.js",
