@@ -133,6 +133,8 @@ function kamaDatepicker(elementID, opt) {
     options.markToday !== undefined ? options.markToday : false;
   options.markHolidays =
     options.markHolidays !== undefined ? options.markHolidays : false;
+  options.isFridayHoliday =
+    options.isFridayHoliday !== undefined ? options.isFridayHoliday : false;
   options.highlightSelectedDay =
     options.highlightSelectedDay !== undefined
       ? options.highlightSelectedDay
@@ -757,7 +759,7 @@ function kamaDatepicker(elementID, opt) {
           // mark holidays by adding .bd-holiday class
           if (options.markHolidays) {
             let isHoliday = false;
-            if (i == 6) {
+            if (options.isFridayHoliday && (i == 6)) {
               // weekend
               isHoliday = true;
             } else {
